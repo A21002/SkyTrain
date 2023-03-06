@@ -41,7 +41,6 @@ CGameMain::~CGameMain()
 	SAFE_DELETE(m_pSeShot);
 	SAFE_DELETE(m_pSeHit);
 	SAFE_DELETE(m_pBgmTitleSelect);
-	SAFE_DELETE(m_pBgmMovie);
 	SAFE_DELETE(m_pBgmMap1);
 	SAFE_DELETE(m_pBgmMap2);
 	SAFE_DELETE(m_pSeStart);
@@ -144,10 +143,9 @@ HRESULT CGameMain::Init()
 	m_pSePower = new CXAudioSource(m_pXAudio, _T("Data/Sound/PowerUp2.wav"));
 	m_pSeShot = new CXAudioSource(m_pXAudio, _T("Data/Sound/MainShot.wav"));
 	m_pSeHit = new CXAudioSource(m_pXAudio, _T("Data/Sound/Damage.wav"), 5);
-	m_pSeStart = new CXAudioSource(m_pXAudio, _T("Data/Sound/Start.wav"));
+	m_pSeStart = new CXAudioSource(m_pXAudio, _T("Data/Sound/Whistle.wav"));
 	m_pSeDash = new CXAudioSource(m_pXAudio, _T("Data/Sound/Dash.wav"));
 	m_pBgmTitleSelect = new CXAudioSource(m_pXAudio, _T("Data/Sound/TitleSelect.mp3"));
-	m_pBgmMovie = new CXAudioSource(m_pXAudio, _T("Data/Sound/Movie.mp3"));
 	m_pBgmMap1 = new CXAudioSource(m_pXAudio, _T("Data/Sound/Map1.mp3"));
 	m_pBgmMap2 = new CXAudioSource(m_pXAudio, _T("Data/Sound/Map2Bgm.mp3"));
 	m_pSeClear = new CXAudioSource(m_pXAudio, _T("Data/Sound/Clear.mp3"));

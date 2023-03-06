@@ -52,10 +52,10 @@
       <UniqueIdentifier>{bf97105b-0dc5-4f89-83e9-4e1ebcac9f1b}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\01_ゲームメイン\Enemy\Lava">
-      <UniqueIdentifier>{73c888a7-0dfa-49f3-8bc8-af1ffbe349e0}</UniqueIdentifier>
+      <UniqueIdentifier>{68098e5e-751c-45fb-924a-06aa6b30effc}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\01_ゲームメイン\Enemy\BigLava">
-      <UniqueIdentifier>{68098e5e-751c-45fb-924a-06aa6b30effc}</UniqueIdentifier>
+      <UniqueIdentifier>{73c888a7-0dfa-49f3-8bc8-af1ffbe349e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -156,10 +156,10 @@
       <Filter>ソース ファイル\01_ゲームメイン\Weapon</Filter>
     </ClInclude>
     <ClInclude Include="Src\EnemyLavaObj.h">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
     </ClInclude>
     <ClInclude Include="Src\EnemyLavaProc.h">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
     </ClInclude>
     <ClInclude Include="Src\EnemyTordProc.h">
       <Filter>ソース ファイル\01_ゲームメイン\Enemy\Tord</Filter>
@@ -183,10 +183,10 @@
       <Filter>ソース ファイル\01_ゲームメイン\Enemy\Cannon</Filter>
     </ClInclude>
     <ClInclude Include="Src\EnemyBigLavaProc.h">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
     </ClInclude>
     <ClInclude Include="Src\EnemyBigLavaObj.h">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
     </ClInclude>
     <ClInclude Include="Src\EffectSmokeProc.h">
       <Filter>ソース ファイル\01_ゲームメイン\Effect ・ Item</Filter>
@@ -316,10 +316,10 @@
       <Filter>ソース ファイル\01_ゲームメイン\Weapon</Filter>
     </ClCompile>
     <ClCompile Include="Src\EnemyLavaObj.cpp">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
     </ClCompile>
     <ClCompile Include="Src\EnemyLavaProc.cpp">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
     </ClCompile>
     <ClCompile Include="Src\EnemyTordProc.cpp">
       <Filter>ソース ファイル\01_ゲームメイン\Enemy\Tord</Filter>
@@ -343,10 +343,10 @@
       <Filter>ソース ファイル\01_ゲームメイン\Enemy\Cannon</Filter>
     </ClCompile>
     <ClCompile Include="Src\EnemyBigLavaProc.cpp">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
     </ClCompile>
     <ClCompile Include="Src\EnemyBigLavaObj.cpp">
-      <Filter>ソース ファイル\01_ゲームメイン\Enemy\Lava</Filter>
+      <Filter>ソース ファイル\01_ゲームメイン\Enemy\BigLava</Filter>
     </ClCompile>
     <ClCompile Include="Src\EffectSmokeProc.cpp">
       <Filter>ソース ファイル\01_ゲームメイン\Effect ・ Item</Filter>

@@ -445,25 +445,27 @@ BOOL   CBaseProc::Hitcheck(CBaseObj* pOtherObj)
 //------------------------------------------------------------------------
 BOOL  CBaseObj::Hitcheck(CBaseObj* pObj)
 {
-	if (m_dwStatus == NORMAL && pObj->m_dwStatus == NORMAL && isCollision(pObj))
+	// ƒŒ[ƒ‹‚Æ‚Ì“–‚½‚è”»’è
+	if (m_dwStatus != DEAD && pObj->m_tag == RAIL && isCollision(pObj))
+	{
+		pObj->m_isHit = TRUE;
+		if (m_dwStatusSub != RAIL) {
+			m_dwStatusSub = RAIL;
+			m_nArrNum = pObj->m_nArrNum;
+		}
+		return TRUE;
+	}
+
+	if ((m_dwStatus == NORMAL || m_dwStatus == RAIL) && pObj->m_dwStatus == NORMAL && isCollision(pObj))
 	{
 		switch (pObj->m_tag) {
-		case RAIL:
-			// ƒŒ[ƒ‹‚Æ“–‚½‚Á‚½Û‚Ìˆ—
-			pObj->m_isHit = TRUE;
-			if (m_dwStatusSub != RAIL) {
-				m_dwStatusSub = RAIL;
-				m_nArrNum = pObj->m_nArrNum;
-			}
-			break;
-
 		case BALLOON:
 			// •—‘D‚Æ“–‚½‚Á‚½Û‚Ìˆ—
 			pObj->m_dwStatus = DEAD;
 			break;
 
 		default:
-			if (!m_isBoost) {
+			if (!m_isBoost || pObj->m_tag == BIGLAVA) {
 				m_dwStatus = DAMAGE;
 			}
 			pObj->m_dwStatus = DAMAGE;

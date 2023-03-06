@@ -64,11 +64,14 @@ void	CEnmCannonObj::Update()
 			}		// break;‚ğ“ü‚ê‚¸‚»‚Ì‚Ü‚Ü@NORMAL@‚Ìˆ—‚ğs‚¤
 		case  NORMAL:
 			// ‰æ–Ê“à‚É‚¢‚éê‡
-			if (m_nWaitTime <= 0) {
-				m_pGMain->m_pWeaponProc->m_pWeaponCannonProc->Start(m_vPos, this, ENM);
-				m_nWaitTime = 180;
+			VECTOR2 scroll = m_pGMain->m_vScroll;
+			if (scroll.x <= m_vPos.x && m_vPos.x <= scroll.x + WINDOW_WIDTH &&
+				scroll.y <= m_vPos.y && m_vPos.y <= scroll.y + WINDOW_HEIGHT) {
+				if (m_nWaitTime <= 0) {
+					m_pGMain->m_pWeaponProc->m_pWeaponCannonProc->Start(m_vPos, this, ENM);
+					m_nWaitTime = 180;
+				}
 			}
-
 			if (m_nWaitTime > 0) {
 				m_nWaitTime--;
 			}

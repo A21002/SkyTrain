@@ -70,8 +70,6 @@ BOOL	CPcObj::Start(VECTOR2 vPos) {
 
 //-----------------------------------------------------------------------------
 // ＰＣオブジェクトの更新
-//
-//   引数　　　なし
 //-----------------------------------------------------------------------------
 void	CPcObj::Update()
 {
@@ -89,6 +87,9 @@ void	CPcObj::Update()
 	}
 }
 
+//-----------------------------------------------------------------------------
+// ＰＣオブジェクトのゲームプレイ中更新
+//-----------------------------------------------------------------------------
 void CPcObj::NormalUpdate() {
 	CDirectInput* pDI = m_pGMain->m_pDI;
 	CMapLine* pHitmapline1 = NULL;
@@ -115,7 +116,7 @@ void CPcObj::NormalUpdate() {
 		if (m_pOtherObj->GetAtc() > 0)
 		{
 			m_nHp -= m_pOtherObj->GetAtc();	// 攻撃を受けたダメージ
-			m_nMaterial -= m_pOtherObj->GetAtc();
+			//m_nMaterial -= m_pOtherObj->GetAtc();
 			if (m_nHp <= 0)
 			{
 				m_nHp = 0;
@@ -196,7 +197,6 @@ void CPcObj::NormalUpdate() {
 		// 地面に接したときに1度だけ実行する処理のフラグ
 		m_bCollisionGroundFirst = TRUE;
 		m_fJumpTime = 0;
-		m_pGMain->m_pSeDash->Play();
 
 		if (!m_bFirstFlag) {	// 最初の坂のみ処理を行わない
 			// 現在乗っているレールの回転角を取得し、自身の回転角とする
@@ -259,13 +259,6 @@ void CPcObj::NormalUpdate() {
 				// 終端に到達すると(-1, -1)を返す
 				if (m_bFirstFlag) {
 					m_bFirstFlag = FALSE;
-					m_pGMain->m_pBgmMovie->Stop();
-					if (m_pGMain->m_pMapProc->GetMapNo() == 0) {
-						m_pGMain->m_pBgmMap1->Play(AUDIO_LOOP);
-					}
-					else {
-						m_pGMain->m_pBgmMap2->Play(AUDIO_LOOP);
-					}
 				}
 				m_dwStatusSub = WALK;
 				m_bMovieFlag = FALSE;
@@ -297,6 +290,7 @@ void CPcObj::NormalUpdate() {
 	// マップ線との接触判定と適切な位置への移動
 	if (m_pGMain->m_pMapProc->isCollisionMoveMap(this, pHitmapline1, pHitmapline2))
 	{
+		m_isBoost = FALSE;
 		if (pHitmapline1 && pHitmapline1->m_vNormal.y <= 0)	// マップ線が垂直まではＯＫ
 		{
 			// 壁に触れたら反転処理
@@ -388,6 +382,9 @@ void CPcObj::NormalUpdate() {
 	}
 }
 
+//-----------------------------------------------------------------------------
+// ＰＣオブジェクトのオープニングムービー中更新
+//-----------------------------------------------------------------------------
 void CPcObj::MovieCamera()
 {
 	CDirectInput* pDI = m_pGMain->m_pDI;
@@ -407,7 +404,7 @@ void CPcObj::MovieCamera()
 			// 到達
 			m_pGMain->m_pSeStart->Play();
 			m_dwStatusPhase = 2;
-			m_nCnt1 = 60 * 4;
+			m_nCnt1 = 60 * 2;
 			break;
 		}
 		if (!m_pSprite->m_bFade) {
@@ -424,11 +421,15 @@ void CPcObj::MovieCamera()
 		m_nCnt1--;
 		if (m_nCnt1 <= 0) {
 			m_pGMain->m_pMapProc->m_bMapMovieFlag = FALSE;
+			Draw();
 		}
 		break;
 	}
 }
 
+//-----------------------------------------------------------------------------
+// レールが消えた際にMPが回復する処理
+//-----------------------------------------------------------------------------
 void CPcObj::AddMaterial(int material)
 {
 	if (m_nHp < m_nMaterial + material) {

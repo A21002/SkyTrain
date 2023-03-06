@@ -88,7 +88,13 @@ void CMapProc::SetMap(int no)
 	m_pGMain->m_pPcProc->GetPcObjPtr()->m_bOnce = TRUE;
 
 	// ƒTƒEƒ“ƒh‚ÌÄ¶
-	m_pGMain->m_pBgmMovie->Play(AUDIO_LOOP);
+	if (m_nMapNo == 0)
+	{
+		m_pGMain->m_pBgmMap1->Play(AUDIO_LOOP);
+	}
+	else {
+		m_pGMain->m_pBgmMap2->Play(AUDIO_LOOP);
+	}
 
 	// ‚o‚bŠJŽnˆÊ’u‚ðÝ’è‚µA‚g‚o‚ð‰ñ•œ‚·‚é
 	m_pGMain->m_pPcProc->GetPcObjPtr()->Start(vPos);

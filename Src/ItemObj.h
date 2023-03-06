@@ -15,13 +15,10 @@
 #include "Dinput.h"
 #include "Sprite.h"
 
-#define  ITEMRESQUE   1           // 救急箱
-#define  ITEMDOOR1    2           // ドア
-#define  ITEMDOOR2	  3
-#define  ITEMDOOR3	  4
-#define  ITEMGOAL	  5
-#define  ITEMFIRSTSLOPE 6
-#define  ITEMPCDUMMY	7
+#define  ITEMRESQUE		1           // 救急箱
+#define  ITEMGOAL		2
+#define  ITEMFIRSTSLOPE	3
+#define  ITEMPCDUMMY	4
 
 //======================================================================
 // アイテム　オブジェクトクラス
@@ -39,4 +36,16 @@ public:
 	// コンストラクタ
 	CItemObj(CGameMain* pGMain);
 	~CItemObj();
+};
+
+//======================================================================
+// 定数クラス
+//======================================================================
+class ItemConstruct
+{
+public:
+	static const int IMAGE_RESQUE_WIDTH = 48;
+	static const int IMAGE_RESQUE_HEIGHT = 48;
+	static const int IMAGE_GOAL_WIDTH = 188;
+	static const int IMAGE_GOAL_HEIGHT = 100;
 };

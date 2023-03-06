@@ -9,7 +9,8 @@
 //------------------------------------------------------------------------
 CEnmLavaObj::CEnmLavaObj(CGameMain* pGMain) : CBaseObj(pGMain)
 {
-	m_pSprite = new CSprite(m_pGMain->m_pImageLava, 0, 0, 48, 48);
+	m_pSprite = new CSprite(m_pGMain->m_pImageLava, 0, 0
+		, 48, 48);
 	m_vPos = VECTOR2(0, 0);
 }
 
@@ -31,7 +32,7 @@ BOOL	CEnmLavaObj::Start(VECTOR2 vPos, DWORD dwOwner)
 	m_bActive = TRUE;
 	ResetStatus();
 	ResetAnim();
-	m_nDirIdx = dwOwner;
+	m_pSprite->SetSrc(0, 0, dwOwner, 48);
 	m_vPos = vPos;	// î≠ê∂à íu
 	m_vPosUp = VECTOR2(0, 0);
 	m_nAnimNum = 1;

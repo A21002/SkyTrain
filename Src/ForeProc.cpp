@@ -20,7 +20,7 @@
 CForeProc::CForeProc(CGameMain* pGMain)
 {
 	m_pGMain = pGMain;
-	m_dwStatusPhase = 1;
+	m_dwStatusPhase = FORE_GAMEMAIN;
 	m_dwPushButton = 0;
 	m_pForegrd = new CSprite(m_pGMain->m_pShader);
 }
@@ -115,6 +115,9 @@ void CForeProc::GameUI()
 		// ムービー処理中は上下に黒いバーを重ねる
 		m_pForegrd->Draw(pImageFore, 0, 0, 0, 576, WINDOW_WIDTH, 100);
 		m_pForegrd->Draw(pImageFore, 0, WINDOW_HEIGHT - 100, 0, 576, WINDOW_WIDTH, 100);
+
+		// スキップアイコン
+		m_pForegrd->Draw(pImageFore, 0, WINDOW_HEIGHT - 100 - 48, 0, 384, 192, 48);
 	}
 	else {
 		// ステータスバーの表示

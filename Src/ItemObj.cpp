@@ -44,7 +44,8 @@ BOOL	CItemObj::Start(VECTOR2 vPos, DWORD dwNo)
 	switch (m_dwStatusSub)
 	{
 	case  ITEMRESQUE:		// 救急箱
-		m_pSprite->SetSrc(384, 336, 48, 48);
+		m_pSprite->SetSrc(384, 336, 
+			ItemConstruct::IMAGE_RESQUE_WIDTH, ItemConstruct::IMAGE_RESQUE_HEIGHT);
 		break;
 
 	case ITEMFIRSTSLOPE:	// 最初の坂の開始地点
@@ -52,7 +53,8 @@ BOOL	CItemObj::Start(VECTOR2 vPos, DWORD dwNo)
 		break;
 
 	case  ITEMGOAL:			// ゴール地点
-		m_pSprite->SetSrc(0, 384, 188, 100);
+		m_pSprite->SetSrc(0, 384, 
+			ItemConstruct::IMAGE_GOAL_WIDTH, ItemConstruct::IMAGE_GOAL_HEIGHT);
 		m_nAnimNum = 1;
 		m_pGMain->m_pEffectProc->m_pEffectGoalArrowProc->Start(m_vPos + VECTOR2(54, -84));
 		break;
@@ -87,7 +89,7 @@ void	CItemObj::Update()
 			break;
 
 		case ITEMFIRSTSLOPE:	// 最初の坂の開始地点
-			m_pGMain->m_pPcProc->GetPcObjPtr()->SetTarget(VECTOR2(m_pGMain->m_pPcProc->GetPcObjPtr()->GetPos().x + 384, m_pGMain->m_pPcProc->GetPcObjPtr()->GetPos().y - 384));
+			m_pGMain->m_pPcProc->GetPcObjPtr()->SetTarget(VECTOR2(m_pGMain->m_pPcProc->GetPcObjPtr()->GetPos().x + 384 + 30, m_pGMain->m_pPcProc->GetPcObjPtr()->GetPos().y - 384));
 			m_pGMain->m_pPcProc->GetPcObjPtr()->SetRotate(-45.0f);
 			m_pGMain->m_pPcProc->GetPcObjPtr()->SetStatusSub(RAIL);
 			break;

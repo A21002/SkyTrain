@@ -108,7 +108,7 @@ VECTOR2 CRailProc::GetNewRailPos()
 //============================================================================
 void CRailProc::SetLastRightPos(VECTOR2 pos, DWORD i)
 {
-
+	m_vLastRightPos[i] = pos;
 }
 
 void CRailProc::SetLastLeftPos(VECTOR2 pos, DWORD i)

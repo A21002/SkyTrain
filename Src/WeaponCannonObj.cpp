@@ -88,7 +88,9 @@ void	CWeaponCannonObj::Update()
 			break;
 		}
 		m_pGMain->m_pRailProc->Hitcheck(this);
-		m_pGMain->m_pPcProc->GetPcObjPtr()->Hitcheck(this);
+		if (!m_pGMain->m_pMapProc->m_bMapMovieFlag) {
+			m_pGMain->m_pPcProc->GetPcObjPtr()->Hitcheck(this);
+		}
 
 		if (m_pGMain->m_pMapProc->isCollisionMoveMap(this, pHitmapline1)) {
 			m_dwStatus = DAMAGE;

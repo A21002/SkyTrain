@@ -128,9 +128,10 @@ BOOL CTitleProc::Select()
 
 	// ボタンのサイズ
 	const int nNum = sizeof(PName) / sizeof(PName[0]);
-	const float fScale = 2.0f;							// カーソルが重なった時の拡大率
-	const int nStartX = 219, nStartY = 200;
-	const int nWidth = 224, nHeight = 160;
+	const float fScale = 1.5f;							// カーソルが重なった時の拡大率
+	const int nStartX = 200, nStartY = 120;
+	const int nWidth = 335, nHeight = 239;
+	const int diff = 300;
 
 	// 拡大した際のサイズ
 	const int nWidthScale = nWidth * fScale;
@@ -138,7 +139,7 @@ BOOL CTitleProc::Select()
 
 	// 背景の表示
 	m_pSprite->Draw(m_pImageSelectBack, 0, 0, 0, 0, WINDOW_WIDTH, WINDOW_HEIGHT);
-
+	/*
 	// ゲームモードセレクト表示
 	for (int i = 0; i < nNum; i++)
 	{
@@ -153,17 +154,25 @@ BOOL CTitleProc::Select()
 			m_pSprite->Draw(m_pImageSelectIcon, nStartX + (nWidth + 478) * i, nStartY, 0 + nWidth * i, 0, nWidth, nHeight);
 		}
 	}
-
+	*/
 	// マウスによるゲームモードセレクト
 	for (int i = 0; i < nNum; i++)
 	{
-		if (CheckMousePos(nStartX + (nWidth + 478) * i, nStartY, nWidth, nHeight))
+		if (CheckMousePos(nStartX + (nWidth + diff) * i, nStartY, nWidth, nHeight))
 		{
+			// 選択中のモード
+			m_pSprite->Draw(m_pImageSelectIcon, nStartX + (nWidth + diff) * i - (nWidthScale - nWidth) / 2, nStartY - (nHeightScale - nHeight) / 2,
+				0 + nWidth * i, 0, nWidth, nHeight, nWidthScale, nHeightScale);
+
 			m_pGMain->m_dwGameMode = i + 1;     // マウスカーソルがゲームモードスプライト内にある
 			if (m_pGMain->m_pDI->CheckMouse(KD_TRG, DIM_LBUTTON))
 			{
 				bRet = TRUE;  // 終了
 			}
+		}
+		else {
+			// 選択していないモード
+			m_pSprite->Draw(m_pImageSelectIcon, nStartX + (nWidth + diff) * i, nStartY, 0 + nWidth * i, 0, nWidth, nHeight);
 		}
 	}
 

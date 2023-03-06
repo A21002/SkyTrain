@@ -36,7 +36,7 @@ BOOL	CEnmBigLavaObj::Start(VECTOR2 vPos)
 	m_vPos.y += WINDOW_HEIGHT;
 	m_vPosUp = VECTOR2(0, 0);
 	m_nAnimNum = 1;
-	m_tag = NONE;
+	m_tag = BIGLAVA;
 	SetStatus(_T("Data/Script/StatusBigLava.csv"));
 	return TRUE;
 }

@@ -62,6 +62,7 @@
 #define  ITEM				0x00000008
 #define  RAIL				0x00000010
 #define  FALL               0x00000020
+#define  BIGLAVA			0x00000040
 
 // ï˚å¸ÅiDirIdxÅj
 #define  RIGHT				0
@@ -123,7 +124,6 @@ public:
 	CXAudioSource* m_pSeShot;
 	CXAudioSource* m_pSeDash;
 	CXAudioSource* m_pBgmTitleSelect;
-	CXAudioSource* m_pBgmMovie;
 	CXAudioSource* m_pBgmMap1;
 	CXAudioSource* m_pBgmMap2;
 	CXAudioSource* m_pSeClear;
